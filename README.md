@@ -1,5 +1,7 @@
 # <font size=12> **PyAxisVM** </font>
 
+<span style="color:red">some *The package is under development. Please follow us on social media, where we'll announce the first release!* text</span>.
+
 # **Overview**
 
 The PyAxisVM project offers a high-level interface to AxisVM, making its operations available directly from Python. It builds on top of Microsoft's COM technology and supports all the features of the original AxisVM COM type library, making you able to
