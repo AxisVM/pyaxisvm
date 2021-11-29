@@ -1,6 +1,6 @@
 # <font size=12> **PyAxisVM** </font>
 
-<span style="color:red">some **The package is under development. Please follow us on social media, where we'll announce the first release!** text</span>
+<span style="color:red">**The package is under development. Please follow us on social media, where we'll announce the first release!**</span>
 
 # **Overview**
 
