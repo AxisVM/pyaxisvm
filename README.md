@@ -2,9 +2,7 @@
 
 # **Overview**
 
-The PyAxisVM project offers a high-level interface to AxisVM, making its operations available directly from Python, in collaboration with your favourite Python packages.
-
-It builds on top of Microsoft's COM technology and supports all the features of the original AxisVM COM type library, making you able to
+The PyAxisVM project offers a high-level interface to AxisVM, making its operations available directly from Python. It builds on top of Microsoft's COM technology and supports all the features of the original AxisVM COM type library, making you able to
   
 * build and analyse parametric models
 
@@ -12,18 +10,11 @@ It builds on top of Microsoft's COM technology and supports all the features of 
 
 * build specific design extension modules
 
-On top of that, PyAxisVM implements a pythonic interface over the core functionality, making your interaction with AxisVM easier.
-
-Here's a quick demo of PyAxisVM within VSCode:
-
-
-
 
 # **Documentation and Issues**
 
 The ***AxisVM API Reference Guide*** is available in pdf format,  you can download it _[***here***](https://axisvm.eu/axisvm-downloads/#application)_.
 
-See the Documentation page for more details, and the Examples gallery for some examples.
 
 Please feel free to post issues and other questions at PyAxisVM Issues. This is the best place to post questions and code.
 
