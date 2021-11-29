@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="axisvm",                     
-    version="0.0.2",                        
+    version="0.0.3",                        
     author="Inter-CAD Ltd",
     author_email = 'bbalogh@axisvm.eu',
     url = 'https://github.com/AxisVM/pyaxisvm',   
