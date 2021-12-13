@@ -74,7 +74,7 @@ def _init_AxisVM(axapp, *args, visible=None, daemon=False, **kwargs):
 
 
 def _init_daemon(axapp, *args, **kwargs):
-    from axisvm.tlb import lbTrue as true, lbFalse as false, \
+    from axisvm.com.tlb import lbTrue as true, lbFalse as false, \
         acEnableNoWarning
     axapp.CloseOnLastReleased = true
     axapp.AskCloseOnLastReleased = false
@@ -97,5 +97,5 @@ def _join_AxisVM():
         return None
     
 if __name__ == '__main__':
-    from axisvm.client import start_AxisVM
+    from axisvm.com.client import start_AxisVM
     axapp = start_AxisVM(visible=True, daemon=True)

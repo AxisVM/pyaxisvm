@@ -15,14 +15,13 @@ setuptools.setup(
     description="A python package for AxisVM",
     long_description=long_description,   
     long_description_content_type="text/markdown",
-    packages=setuptools.find_packages(),   
+    packages=setuptools.find_packages(where='src'),   
     classifiers=[
         'Development Status :: 3 - Alpha',     
         'License :: OSI Approved :: MIT License',   
         'Programming Language :: Python :: 3',
     ],                                      
-    python_requires='>=3.6',                
-    py_modules=["axisvm"],             
+    python_requires='>=3.6',                             
     package_dir={'':'src'},     
     install_requires=[            
           'setuptools',
