@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "..\\axisvm\\src\\axisvm"
+		},
+		{
+			"path": "..\\dewloosh-core"
 		}
 	],
 	"settings": {}
