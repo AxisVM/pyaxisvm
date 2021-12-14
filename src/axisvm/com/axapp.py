@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from axisvm.com.core.wrap import Wrapper
+from dewloosh.core.typing.wrap import Wrapper
 from axisvm.com.axmodel import AxModel, AxModels
 import os
 

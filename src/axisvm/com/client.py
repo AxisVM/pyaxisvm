@@ -73,6 +73,8 @@ def start_AxisVM(*args, join=False, visible=None,
             res.model = args[0]
         return res
     else:
+        if len(args) > 0 and isinstance(args[0], str):
+            _from_file(axapp, args[0])
         return axapp
 
 
