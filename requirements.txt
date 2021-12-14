@@ -1,1 +1,4 @@
 comtypes
+vtk
+pyvista
+dewloosh.geom

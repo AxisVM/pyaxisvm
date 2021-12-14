@@ -1,12 +1,14 @@
+# -*- coding: utf-8 -*-
 from comtypes.client import CreateObject, GetActiveObject
 from time import sleep
+from axisvm.com.axapp import AxApp
 
 
 __all__ = ['start_AxisVM']
 
 
 def start_AxisVM(*args, join=False, visible=None, 
-                 daemon=False, **kwargs):
+                 daemon=False, wrap=True, **kwargs):
     """Returns an interface to a new, or an existing AxisVM application. 
     
     If the argument `join` is True, an attempt is made to connect to an \n
@@ -40,6 +42,11 @@ def start_AxisVM(*args, join=False, visible=None,
         >>> axapp.ApplicationClose = acEnableNoWarning
         ```
         
+    wrap : boolean, optional \n
+        Wraps the returning object if True, returns the raw object otherwise. \n
+        Default is True.
+
+        
     Returns
     -------
     axisvm.axapp.AxApp
@@ -59,10 +66,14 @@ def start_AxisVM(*args, join=False, visible=None,
         axapp = CreateObject("AxisVM.AxisVMApplication")
     if axapp is not None:
         _init_AxisVM(axapp, daemon=daemon, visible=visible, **kwargs)
-        
-    if len(args) > 0 and isinstance(args[0], str):
-	    _from_file(axapp, args[0])
-    return axapp
+    
+    if wrap:
+        res = AxApp(wrap=axapp) 
+        if len(args) > 0 and isinstance(args[0], str):
+            res.model = args[0]
+        return res
+    else:
+        return axapp
 
 
 def _init_AxisVM(axapp, *args, visible=None, daemon=False, **kwargs):

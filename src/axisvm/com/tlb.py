@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from win32com.client.selecttlb import FindTlbsWithDescription
 from comtypes import client as cc, GUID as comGUID
 import comtypes.client as cc
