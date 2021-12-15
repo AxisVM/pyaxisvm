@@ -1,11 +1,29 @@
 # -*- coding: utf-8 -*-
 from dewloosh.core.typing.wrap import Wrapper
+from typing import Callable
 
 
-__all__ = ['AxWrapper', 'CollectionWrapper']
+__all__ = ['AxWrapper']
 
 
 NoneType = type(None)
+
+
+class AxItemCollection(list):
+    
+    def __getattribute__(self, attr):
+        if hasattr(self[0], attr):
+            _attr = getattr(self[0], attr)
+            if isinstance(_attr, Callable):
+                getter = lambda i : getattr(i, attr)
+                funcs = map(getter, self)
+                def inner(*args, **kwargs):
+                    return list(map(lambda f : f(*args, **kwargs), funcs)) 
+                return inner
+            else:
+                return list(map(lambda i : getattr(i, attr), self)) 
+        else:
+            return super().__getattribute__(attr)  
 
 
 class AxWrapper(Wrapper):
@@ -13,41 +31,33 @@ class AxWrapper(Wrapper):
     __itemcls__ = None
     
     def __init__(self, *args, **kwargs):
-        self._iterable = False
+        self.__has_items = False
         super().__init__(*args, **kwargs)
             
     def wrap(self, obj=None):
         if obj is not None:
             if hasattr(obj, 'Item'):
-                self._iterable = True
+                self.__has_items = True
             else:
-                self._iterable = False
+                self.__has_items = False
                 self.__itemcls__ = None
         super().wrap(obj)
             
     @property
     def Item(self):
-        if self._iterable:
+        if self.__has_items:
             return self
         else:
-            raise AttributeError("Object {} has not attribute 'Item'.".format(self))
-    
-    def __getattr__(self, attr):
-        if attr in self.__dict__:
-            return getattr(self, attr)
-        try:
-            return getattr(self._wrapped, attr)
-        except Exception:
-            raise AttributeError("'{}' object has no attribute \
-                called {}".format(self.__class__.__name__, attr))
-        
+            raise AttributeError("Object {} has no attribute 'Item'.".format(self))
+            
     def __getitem__(self, ind):
-        if self.__itemcls__:
+        if self.__has_items:
+            cls = AxWrapper if self.__itemcls__ is None else self.__itemcls__
             if isinstance(ind, int):
-                return self.__itemcls__(wrap=self._wrapped.Item[ind])
+                return cls(wrap=self._wrapped.Item[ind])
             elif isinstance(ind, slice):
                 axobj = self._wrapped
-                item = lambda i : self.__itemcls__(wrap=axobj.Item[i])
+                item = lambda i : cls(wrap=axobj.Item[i])
                 start, stop, step = ind.start, ind.stop, ind.step
                 start = 1 if start == None else start
                 stop = axobj.Count + 1 if stop == None else stop
@@ -55,7 +65,10 @@ class AxWrapper(Wrapper):
                 res = [item(i) for i in range(start, stop, step)]
                 if len(res) == 1:
                     return res[0]
-                return res
+                if self.__itemcls__ is not None:
+                    return AxItemCollection(res)
+                else:
+                    return res
             else:
                 raise NotImplementedError
         else:            
@@ -70,29 +83,6 @@ class AxWrapper(Wrapper):
                                         self.__class__.__name__))
 
 
-class CollectionWrapper(Wrapper):
 
-    __itemcls__ = None
-         
-    @property
-    def Item(self):
-        return self
-        
-    def __getitem__(self, ind):
-        if isinstance(ind, int):
-            return self.__itemcls__(wrap=self._wrapped.Item[ind])
-        elif isinstance(ind, slice):
-            axobj = self._wrapped
-            item = lambda i : self.__itemcls__(wrap=axobj.Item[i])
-            start, stop, step = ind.start, ind.stop, ind.step
-            start = 1 if start == None else start
-            stop = axobj.Count + 1 if stop == None else stop
-            step = 1 if step == None else step
-            res = [item(i) for i in range(start, stop, step)]
-            if len(res) == 1:
-                return res[0]
-            return res
-        else:
-            raise NotImplementedError
                
             

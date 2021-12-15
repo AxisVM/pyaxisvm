@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from dewloosh.core.typing.wrap import Wrapper
-from axisvm.com.core.wrap import CollectionWrapper
+from axisvm.com.core.wrap import AxWrapper
 from axisvm.com.axdomain import AxDomains
 import numpy as np
 
@@ -8,7 +7,7 @@ import numpy as np
 __all__ = ['AxModels', 'AxModel', 'AxDomains', 'AxDomain']
 
 
-class AxModel(Wrapper):
+class AxModel(AxWrapper):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -35,7 +34,7 @@ class AxModel(Wrapper):
         return AxLines(model=self, wrap=self._wrapped.Lines)
 
 
-class AxModels(CollectionWrapper):
+class AxModels(AxWrapper):
     
     __itemcls__ = AxModel
     
@@ -44,13 +43,13 @@ class AxModels(CollectionWrapper):
         self.app = app
 
         
-class AxLine(Wrapper):
+class AxLine(AxWrapper):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
 
-class AxLines(CollectionWrapper):
+class AxLines(AxWrapper):
     
     __itemcls__ = AxLine
     

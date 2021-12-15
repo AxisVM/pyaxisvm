@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from dewloosh.core.typing.wrap import Wrapper
-from axisvm.com.core.wrap import CollectionWrapper
+from axisvm.com.core.wrap import AxWrapper
 from axisvm.com.core.utils import RMatrix3x3toNumPy, RMatrix2x2toNumPy
 from axisvm.com.utils.surfaces import group_surfaces
 import numpy as np
@@ -12,7 +11,7 @@ except ImportError:
     __pdata__ = False
     
 
-class AxDomain(Wrapper):
+class AxDomain(AxWrapper):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -39,7 +38,7 @@ class AxDomain(Wrapper):
             return A, B, D, S
         
 
-class AxDomains(CollectionWrapper):
+class AxDomains(AxWrapper):
     
     __itemcls__ = AxDomain
     
