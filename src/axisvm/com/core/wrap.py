@@ -57,7 +57,7 @@ class AxWrapper(Wrapper):
                 return cls(wrap=self._wrapped.Item[ind])
             elif isinstance(ind, slice):
                 axobj = self._wrapped
-                item = lambda i : cls(wrap=axobj.Item[i])
+                item = lambda i : cls(wrap=axobj.Item[i], parent=self)
                 start, stop, step = ind.start, ind.stop, ind.step
                 start = 1 if start == None else start
                 stop = axobj.Count + 1 if stop == None else stop

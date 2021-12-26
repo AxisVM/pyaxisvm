@@ -13,11 +13,22 @@ except ImportError:
 
 class AxDomain(AxWrapper):
     
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, parent=None, **kwargs):
         super().__init__(*args, **kwargs)
+        self.parent = parent
+    
+    @property 
+    def model(self):
+        return self.parent.model
                         
     def coords(self, *args, **kwargs):
-        raise NotImplementedError
+        coords = self.model.coords()
+        
+    def cell_coords(self):
+        pass
+    
+    def topology(self, *args, frmt='jagged', **kwargs):
+        pass
     
     def plot(self, *args, isolate=True, proj='2d', backend='mpl', **kwargs):
         raise NotImplementedError
