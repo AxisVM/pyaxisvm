@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from dewloosh.core.typing.wrap import Wrapper
+from axisvm.com.core.wrap import AxWrapper
 from axisvm.com.axmodel import AxModel, AxModels
 import os
 
 
-class AxApp(Wrapper):
+class AxApp(AxWrapper):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

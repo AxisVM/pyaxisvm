@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from dewloosh.core.typing.wrap import Wrapper
-from typing import Callable
+from typing import Callable, Iterable, Any
 
 
 __all__ = ['AxWrapper']
@@ -23,9 +23,9 @@ class AxItemCollection(list):
             else:
                 return list(map(lambda i : getattr(i, attr), self)) 
         else:
-            return super().__getattribute__(attr)  
-
-
+            return super().__getattribute__(attr)
+        
+        
 class AxWrapper(Wrapper):
 
     __itemcls__ = None
@@ -49,7 +49,19 @@ class AxWrapper(Wrapper):
             return self
         else:
             raise AttributeError("Object {} has no attribute 'Item'.".format(self))
-            
+    
+    def __getattr__(self, attr):
+        res = super().__getattr__(attr)
+        if hasattr(res, 'Item'):
+            return AxWrapper(wrap=res)
+        return res
+    
+    def __setattr__(self, __name: str, __value: Any) -> None:
+        if '_wrapped' in self.__dict__:
+            if self._wrapped is not None and hasattr(self._wrapped, __name):
+                return setattr(self._wrapped, __name, __value)
+        return super().__setattr__(__name, __value)
+
     def __getitem__(self, ind):
         if self.__has_items:
             cls = AxWrapper if self.__itemcls__ is None else self.__itemcls__
@@ -65,10 +77,14 @@ class AxWrapper(Wrapper):
                 res = [item(i) for i in range(start, stop, step)]
                 if len(res) == 1:
                     return res[0]
-                if self.__itemcls__ is not None:
-                    return AxItemCollection(res)
-                else:
-                    return res
+                return AxItemCollection(res)
+            elif isinstance(ind, Iterable):
+                axobj = self._wrapped
+                item = lambda i : cls(wrap=axobj.Item[i], parent=self)
+                res = [item(i) for i in ind]
+                if len(res) == 1:
+                    return res[0]
+                return AxItemCollection(res)
             else:
                 raise NotImplementedError
         else:            

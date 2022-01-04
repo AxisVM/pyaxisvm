@@ -1,6 +1,5 @@
 setuptools
 wheel
-comtypes
 vtk
 pyvista
 dewloosh.geom

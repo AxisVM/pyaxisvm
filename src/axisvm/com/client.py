@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from comtypes.client import CreateObject, GetActiveObject
+import win32com.client as win32
 from time import sleep
 from axisvm.com.axapp import AxApp
 
@@ -53,7 +54,7 @@ def start_AxisVM(*args, join=False, visible=None,
         A python wrapper around an IAxisVMApplication instance.
  
     """
-    axapp = _join_AxisVM()
+    axapp = _join_AxisVM() if join else None
     if axapp is not None and not join:
         try:
             axapp.Quit()
