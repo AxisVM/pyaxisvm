@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from comtypes.client import CreateObject, GetActiveObject
-import win32com.client as win32
 from time import sleep
 from axisvm.com.axapp import AxApp
 

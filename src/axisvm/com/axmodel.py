@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from axisvm.com.core.wrap import AxWrapper
 from axisvm.com.axdomain import AxDomains
-import numpy as np
 
 
 __all__ = ['AxModels', 'AxModel', 'AxDomains', 'AxDomain']
@@ -15,16 +14,7 @@ class AxModel(AxWrapper):
         
     def set_working_directory(self, path : str):
         self.wdir = path
-        
-    def coords(self, nIDs=None):
-        if nIDs is None:
-            nIDs = [i+1 for i in range(self._wrapped.Nodes.Count)]
-        coords = self._wrapped.Nodes.BulkGetCoord(nIDs)[0]
-        return np.array([[n.x, n.y, n.z] for n in coords])
             
-    def plot(self):
-        raise NotImplementedError
-    
     @property
     def Domains(self):
         return AxDomains(model=self, wrap=self._wrapped.Domains)
