@@ -1,29 +1,20 @@
 # **PyAxisVM**
 
-The official python package of AxisVM, a Structural Analysis & Design Software.
+The official python package of **AxisVM**, a Structural Analysis & Design Software.
 
 ## **Overview**
 
-The PyAxisVM project offers a high-level interface to AxisVM, making its operations available directly from Python. It builds on top of Microsoft's COM technology and supports all the features of the original AxisVM COM type library, making you able to
+The **PyAxisVM** project offers a high-level interface to **AxisVM**, making its operations available directly from Python. It builds on top of Microsoft's COM technology and supports all the features of the original **AxisVM** COM type library, making you able to
   
-* build, manipulate and analyse AxisVM models
+* build, manipulate and analyse **AxisVM** models
 
-* find solutions with iterative methods
+* find better solutions with iterative methods
+
+* combine the power of **AxisVM** with third-party Python libraries
 
 * build extension modules
 
-on top of that, **PyAxisVM** ehnaces the type library with python's slicing mechanism and context management that enables writing clean, concise, and radable code.
-
-
-## **Documentation and Issues**
-
-The ***AxisVM API Reference Guide*** is available in pdf format,  you can download it _[***here***](https://axisvm.eu/axisvm-downloads/#application)_.
-
-
-It is highly recommended to install **PyAxisVM** in a dedicated virtual enviroment to avoid conflicts with other libraries. Onw of the reasons for this is that the `comtypes` package throws an error for empty SafeArrays. This issue is solved and a pull request has been made. Because of this, until the request gets accepted, it is important to uninstall exisitng installations of `comtypes` before installing **PyAxisVM**. When you install **PyAxisVM**, a corrected version of `comtypes` gets installed automatically. Installing **PyAxisVM** in a dedicated virtual enviroment naturally dissolves this issue.
-
-
-Please feel free to post issues and other questions at PyAxisVM Issues. This is the best place to post questions and code.
+On top of that, **PyAxisVM** ehnaces the type library with Python's slicing mechanism, context management and more, that enables writing clean, concise, and readable code.
 
 ## **Installation**
 This is optional, but we suggest you to create a dedicated virtual enviroment to avoid conflicts with your other projects. Create a folder, open a command shell in that folder and use the following command
@@ -38,15 +29,30 @@ Once the enviroment is created, activate it via typing
 >>> .\venv_name\Scripts\activate
 ```
 
-The AxisVM python package can be installed (either in a virtual enviroment or globally) from PyPI using `pip` on Python >= 3.5:
+The **AxisVM** python package can be installed (either in a virtual enviroment or globally) from PyPI using `pip` on Python >= 3.5:
 
 ```console
 >>> pip install axisvm
 ```
 
+## **Documentation and Issues**
+
+The ***AxisVM API Reference Guide*** is available in pdf format,  you can download it _[***here***](https://axisvm.eu/axisvm-downloads/#application)_.
+
+
+It is highly recommended to install **PyAxisVM** in a dedicated virtual enviroment to avoid conflicts with other libraries. One of the reasons for this is that the `comtypes` package throws an error for empty SafeArrays. This issue is fixed and a pull request has been made. Until the request gets accepted, it is important to uninstall exisitng installations of `comtypes` before installing **PyAxisVM**. Alternatively, you can install **PyAxisVM** using the `--force-reinstall` flag. 
+
+```console
+>>> pip install --force-reinstall axisvm
+```
+
+If `comtypes` is not yet installed or you install **PyAxisVM** in a dedicated virtual enviroment, a corrected version of `comtypes` gets installed automatically. 
+
+Please feel free to post issues and other questions at **PyAxisVM** Issues. This is the best place to post questions and code.
+
 ## **Dependencies**
 
-You will need a local licenced copy of AxisVM prior and including 13r2. To get a copy of AxisVM, please visit our _[***homepage***](https://axisvm.eu/)_.
+You will need a local licenced copy of **AxisVM** prior and including 13r2. To get a copy of **AxisVM**, please visit our _[***homepage***](https://axisvm.eu/)_.
 
 
 ## **Getting Started**
@@ -54,7 +60,7 @@ You will need a local licenced copy of AxisVM prior and including 13r2. To get a
 
 ### **Register the AxisVM Type Library**
 
-If this is not your first time using AxisVM through a COM interface on your machine, you should already have a registered type library and you can skip this step. Otherwise, follow the instructions at the beginning of the ***AxisVM API Reference Guide***.
+If this is not your first time using **AxisVM** through a COM interface on your machine, you should already have a registered type library and you can skip this step. Otherwise, follow the instructions at the beginning of the ***AxisVM API Reference Guide***.
 
 
 ### **Launch AxisVM**
@@ -79,7 +85,7 @@ modelId = axapp.Models.New()
 axmodel = axapp.Models.Item[modelId]
 ```
 
-Every time you create a new AxisVM instance with the `start_AxisVM` command, an attempt is made to import the type library as a python module, or to generate one if necessary. The generated module is then accessible as `axisvm.com.tlb`.
+Every time you create a new **AxisVM** instance with the `start_AxisVM` command, an attempt is made to import the type library as a python module, or to generate one if necessary. The generated module is then accessible as `axisvm.com.tlb`.
  
 The next block of commands adds a line to the scene:
 
@@ -91,7 +97,7 @@ n2 = axmodel.Nodes.Add(1, 1, 1)
 l1 = axmodel.Lines.Add(n1, n2, lgtStraightLine, RLineGeomData())
 ```
 
-Put AxisVM on top and scale model to fill up the current view:
+Put **AxisVM** on top and scale model to fill up the current view:
 
 
 ```python
@@ -107,9 +113,11 @@ axapp.UnLoadCOMClients()
 axapp.Quit()
 ```
 
+Take a look at the jupyter notebooks in the examples folder of this repository for more complete examples.
+
 ## **Tips and Tricks**
 
-**PyAxisVM** wraps up the COM type library, allowing users to exploit the elegant and concise syntax python provides, while leaving everything on the table. If for example, we wanted to calculate areas of surface elements, the out of box solution would be something like
+**PyAxisVM** wraps up the COM type library, allowing users to exploit the elegant and concise syntax Python provides, while leaving everything on the table. If for example, we wanted to calculate areas of surface elements, the out of box solution would be something like
 
 ```python
 areas = []
@@ -123,7 +131,7 @@ or using a list comprehension
 areas = [axmodel.Surfaces.Item[i+1].Area for i in range(axmodel.Surfaces.Count)]
 ```
 
-With **PyAxisVM**, evaluation of single entity properties over collections is as easy as
+With **PyAxisVM**, evaluation of single item properties over collections is as easy as
 
 ```python
 areas = [s.Area for s in axmodel.Surfaces]
@@ -135,10 +143,10 @@ or simply
 areas = axmodel.Surfaces[:].Area
 ```
 
-To get a full overview about the pythonic usage of COM services, check out this jupyter notebook.
+To get a full overview about the pythonic usage of the library, check out _[***this***](https://github.com/AxisVM/pyaxisvm/blob/31658f52f3db47412e0fda91ca7ab662a3a1c1f4/examples/tips_and_tricks.ipynb)_ jupyter notebook.
 
 ## **License and Acknowledgments**
 
-PyAxisVM is licensed under the MIT license.
+**PyAxisVM** is licensed under the MIT license.
 
-This module, PyAxisVM makes no commercial claim over AxisVM whatsoever. This tool extends the functionality of AxisVM by adding a Python interface to the AxisVM COM service without changing the core behavior or license of the original software. The use of PyAxisVM requires a legally licensed local copy of AxisVM.
+This module, **PyAxisVM** makes no commercial claim over AxisVM whatsoever. This tool extends the functionality of **AxisVM** by adding a Python interface to the **AxisVM** COM service without changing the core behavior or license of the original software. The use of **PyAxisVM** requires a legally licensed local copy of **AxisVM**.
