@@ -49,6 +49,16 @@ class AxWrapper(Wrapper):
             return self
         else:
             raise AttributeError("Object {} has no attribute 'Item'.".format(self))
+        
+    def __len__(self):
+        if hasattr(self._wrapped, 'Count'):
+            return self._wrapped.Count
+        else:
+            raise AttributeError("Object {} has no concept of length.".format(self._wrapped)) 
+    
+    def __iter__(self):
+        for i in range(1, self.Count + 1):
+            yield self[i]
     
     def __getattr__(self, attr):
         res = super().__getattr__(attr)

@@ -10,11 +10,7 @@ class AxModel(AxWrapper):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.wdir = None
-        
-    def set_working_directory(self, path : str):
-        self.wdir = path
-            
+                            
     @property
     def Domains(self):
         return AxDomains(model=self, wrap=self._wrapped.Domains)

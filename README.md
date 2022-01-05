@@ -1,21 +1,24 @@
 # **PyAxisVM**
 
-**The package is under development. Follow us on social media, where we'll announce the first release!**
+The official python package of AxisVM, a Structural Analysis & Design Software.
 
 ## **Overview**
 
 The PyAxisVM project offers a high-level interface to AxisVM, making its operations available directly from Python. It builds on top of Microsoft's COM technology and supports all the features of the original AxisVM COM type library, making you able to
   
-* build and analyse parametric models
+* build, manipulate and analyse AxisVM models
 
 * find solutions with iterative methods
 
-* build specific design extension modules
+* build extension modules
 
 
 ## **Documentation and Issues**
 
 The ***AxisVM API Reference Guide*** is available in pdf format,  you can download it _[***here***](https://axisvm.eu/axisvm-downloads/#application)_.
+
+
+It is highly recommended to install `pyaxisvm` in a dedicated virtual enviroment to avoid conflicts with other libraries. Onw of the reasons for this is that the `comtypes` package throws an error for empty SafeArrays. This issue is solved and a pull request has been made. Because of this, until the request gets accepted, it is important to uninstall exisitng installations of `comtypes` before installing `pyaxisvm`. When you install `pyaxisvm`, a corrected version of `comtypes` gets installed automatically. Installing `pyaxisvm` in a dedicated virtual enviroment naturally dissolves the possible conflicts.
 
 
 Please feel free to post issues and other questions at PyAxisVM Issues. This is the best place to post questions and code.
@@ -49,7 +52,7 @@ You will need a local licenced copy of AxisVM prior and including 13r2. To get a
 
 ### **Register the AxisVM Type Library**
 
-If this is not your first time using the AxisVM through a COM interface on your machine, you should already have a registered type library and you can skip this step. Otherwise, follow the instructions at the beginning of the ***AxisVM API Reference Guide***.
+If this is not your first time using AxisVM through a COM interface on your machine, you should already have a registered type library and you can skip this step. Otherwise, follow the instructions at the beginning of the ***AxisVM API Reference Guide***.
 
 
 ### **Launch AxisVM**
@@ -59,10 +62,10 @@ The `axisvm.com.client` submodule implements various tools to handle the client 
 
 ```python
 from axisvm.com.client import start_AxisVM
-axapp = start_AxisVM(visible=True, join=True)
+axapp = start_AxisVM(visible=True)
 ```
 
-By providing the keyword argument `join=True`, python is first looking for a running instance of AxisVM, and tries connecting to it. If there is no running instance, a new application is launched. In both cases, the call returns a pointer to an AxisVM aplication. To test the connection, you can query the path of the executable being run by typing `axapp.FullExePath`.
+To test the connection, you can query the path of the executable being run by typing `axapp.FullExePath`.
 
 ### **Basic Usage**
 

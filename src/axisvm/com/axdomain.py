@@ -14,11 +14,8 @@ class AxDomain(AxWrapper):
     @property 
     def model(self):
         return self.parent.model
-                            
-    def plot(self, *args, isolate=True, proj='2d', backend='mpl', **kwargs):
-        raise NotImplementedError
-        
-    def ABDS(self, compose=True):
+                                    
+    def ABDS(self, *args, compose=True, **kwargs):
         A, B, D, S, *_ = self._wrapped.GetCustomStiffnessMatrix()
         A, B, D = [RMatrix3x3toNumPy(x) for x in (A, B, D)]
         S = RMatrix2x2toNumPy(S)
