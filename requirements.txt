@@ -1,1 +1,3 @@
-comtypes
+setuptools
+wheel
+dewloosh.geom
