@@ -54,7 +54,7 @@ def start_AxisVM(*args, join=False, visible=None,
         A python wrapper around an IAxisVMApplication instance.
  
     """
-    axapp = _join_AxisVM() if join else None
+    axapp = _find_AxisVM()
     if axapp is not None and not join:
         try:
             axapp.Quit()
@@ -104,7 +104,7 @@ def _from_file(axapp, path):
         raise e
 
 
-def _join_AxisVM():
+def _find_AxisVM():
     try:
         return GetActiveObject('AxisVM.AxisVMApplication')
     except Exception:

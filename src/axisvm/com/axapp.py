@@ -43,11 +43,13 @@ class AxApp(AxWrapper):
         self.model = self._wrapped.Models.New()
         return self._model
     
-    def quit(self, *args, unload_client=True, **kwargs):
+    def Quit(self, *args, unload_client=True, **kwargs):
         if unload_client:
             self._wrapped.UnLoadCOMClients()
         self._wrapped.Quit()
         self._wrapped = None
         
+    def __del__(self):
+        self.Quit()
         
 

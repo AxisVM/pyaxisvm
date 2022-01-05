@@ -32,7 +32,15 @@ class AxModel(AxWrapper):
     @property
     def Lines(self):
         return AxLines(model=self, wrap=self._wrapped.Lines)
+    
+    def __enter__(self):
+        if self._wrapped is not None:
+            self._wrapped.BeginUpdate()
 
+    def __exit__(self, exc_type, exc_value, exc_tb):
+        if self._wrapped is not None:
+            self._wrapped.EndUpdate()
+    
 
 class AxModels(AxWrapper):
     
