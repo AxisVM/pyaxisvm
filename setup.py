@@ -4,6 +4,10 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+required.append('comtypes @ https://github.com/BALOGHBence/comtypes/archive/refs/tags/v1.0.0.zip')
+
 setuptools.setup(
     name="axisvm",                     
     version="0.0.4",                        
@@ -15,20 +19,14 @@ setuptools.setup(
     description="A python package for AxisVM",
     long_description=long_description,   
     long_description_content_type="text/markdown",
-    packages=setuptools.find_packages(),   
+    packages=setuptools.find_packages(where='src'),   
     classifiers=[
         'Development Status :: 3 - Alpha',     
         'License :: OSI Approved :: MIT License',   
         'Programming Language :: Python :: 3',
-    ],                                      
-    python_requires='>=3.6',                
-    py_modules=["axisvm"],             
-    package_dir={'':'src'},     
-    install_requires=[            
-          'setuptools',
-          'wheel',
-          'comtypes',
-          'pywin32'
-      ],
+    ],
+    python_requires='>=3.6',                             
+    package_dir={'':'src'},
+	install_requires=required
 )
 

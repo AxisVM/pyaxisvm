@@ -103,6 +103,7 @@ celerybeat.pid
 
 # Environments
 .env
+.axisvm
 .venv
 env/
 venv/
@@ -133,3 +134,7 @@ dmypy.json
 
 # working directory
 working/
+
+workspace.code-workspace
+
+*.code-workspace
