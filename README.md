@@ -12,13 +12,15 @@ The PyAxisVM project offers a high-level interface to AxisVM, making its operati
 
 * build extension modules
 
+on top of that, **PyAxisVM** ehnaces the type library with python's slicing mechanism and context management that enables writing clean, concise, and radable code.
+
 
 ## **Documentation and Issues**
 
 The ***AxisVM API Reference Guide*** is available in pdf format,  you can download it _[***here***](https://axisvm.eu/axisvm-downloads/#application)_.
 
 
-It is highly recommended to install `pyaxisvm` in a dedicated virtual enviroment to avoid conflicts with other libraries. Onw of the reasons for this is that the `comtypes` package throws an error for empty SafeArrays. This issue is solved and a pull request has been made. Because of this, until the request gets accepted, it is important to uninstall exisitng installations of `comtypes` before installing `pyaxisvm`. When you install `pyaxisvm`, a corrected version of `comtypes` gets installed automatically. Installing `pyaxisvm` in a dedicated virtual enviroment naturally dissolves the possible conflicts.
+It is highly recommended to install **PyAxisVM** in a dedicated virtual enviroment to avoid conflicts with other libraries. Onw of the reasons for this is that the `comtypes` package throws an error for empty SafeArrays. This issue is solved and a pull request has been made. Because of this, until the request gets accepted, it is important to uninstall exisitng installations of `comtypes` before installing **PyAxisVM**. When you install **PyAxisVM**, a corrected version of `comtypes` gets installed automatically. Installing **PyAxisVM** in a dedicated virtual enviroment naturally dissolves this issue.
 
 
 Please feel free to post issues and other questions at PyAxisVM Issues. This is the best place to post questions and code.
@@ -104,6 +106,36 @@ At the end of your session, release the connection and close the application sim
 axapp.UnLoadCOMClients()
 axapp.Quit()
 ```
+
+## **Tips and Tricks**
+
+**PyAxisVM** wraps up the COM type library, allowing users to exploit the elegant and concise syntax python provides, while leaving everything on the table. If for example, we wanted to calculate areas of surface elements, the out of box solution would be something like
+
+```python
+areas = []
+for i in range(axmodel.Surfaces.Count):
+    areas.append(axmodel.Surfaces.Item[i+1].Area)
+```
+
+or using a list comprehension
+
+```python
+areas = [axmodel.Surfaces.Item[i+1].Area for i in range(axmodel.Surfaces.Count)]
+```
+
+With **PyAxisVM**, evaluation of single entity properties over collections is as easy as
+
+```python
+areas = [s.Area for s in axmodel.Surfaces]
+```
+
+or simply
+
+```python
+areas = axmodel.Surfaces[:].Area
+```
+
+To get a full overview about the pythonic usage of COM services, check out this jupyter notebook.
 
 ## **License and Acknowledgments**
 
