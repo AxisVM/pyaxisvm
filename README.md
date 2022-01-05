@@ -113,7 +113,7 @@ axapp.UnLoadCOMClients()
 axapp.Quit()
 ```
 
-Take a look at the jupyter notebooks in the examples folder of this repository for more complete examples.
+Take a look at the jupyter notebooks in the _[***examples***](https://github.com/AxisVM/pyaxisvm/tree/main/examples)_ folder of this repository for more use cases.
 
 ## **Tips and Tricks**
 
