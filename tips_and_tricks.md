@@ -4,7 +4,7 @@ This notebook sums up the changes in syntax, compared to the 'raw' usage of the 
 
 ### **Collections and Slicing**
 
-When accessing items of collection-like COM classes (like `IAxisVMDomains`, `IAxisVMSurfaces`, anything having an `Item` method), you can use the slicing mechanism of python. Suppose that we have an `IAxisVMModel`  instance called `axm`. The model has several domains, each of which having the property `Weight`. Let say we want to calculate the weight of all domains. The out of box solution for this would be something like
+When accessing items of collection-like COM classes (like `IAxisVMDomains`, `IAxisVMSurfaces`, anything having an `Item` method), you can use the slicing mechanism of python. Suppose that we have an `IAxisVMModel`  instance called `axm`. The model has several domains, each of them having the property `Weight`. Let say we want to calculate the weight of all domains. The out of box solution for this would be something like
   
 ```python
 weights=[]
