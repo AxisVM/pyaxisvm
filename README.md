@@ -143,7 +143,7 @@ or simply
 areas = axmodel.Surfaces[:].Area
 ```
 
-To get a full overview about the pythonic usage of the library, check out _[***this***](https://github.com/AxisVM/pyaxisvm/blob/31658f52f3db47412e0fda91ca7ab662a3a1c1f4/examples/tips_and_tricks.ipynb)_ jupyter notebook.
+Click [***here***](https://github.com/AxisVM/pyaxisvm/blob/6abfebdfd26a76721836e1b490465d1f5a474a83/tips_and_tricks.md)_ to get a full overview about the pythonic usage of the library.
 
 ## **License and Acknowledgments**
 
