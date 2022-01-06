@@ -38,4 +38,3 @@ class AxDomains(AxWrapper):
     def __init__(self, *args, model=None, **kwargs):
         super().__init__(*args, **kwargs)
         self.model = model
-                        

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import axisvm
 from axisvm.com.core.wrap import AxWrapper
 from axisvm.com.axdomain import AxDomains
 
@@ -26,8 +27,8 @@ class AxModel(AxWrapper):
     def __exit__(self, exc_type, exc_value, exc_tb):
         if self._wrapped is not None:
             self._wrapped.EndUpdate()
-    
-
+            
+   
 class AxModels(AxWrapper):
     
     __itemcls__ = AxModel

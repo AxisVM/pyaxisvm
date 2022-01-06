@@ -23,6 +23,9 @@ def start_AxisVM(*args, join=False, visible=None,
     join : boolean, optional \n
         Controls what to do if there is an already running instance \n
         to connect to. Default is False.
+        
+        This is only available from X6r2. For versions prior to this, \n
+        `join=True` has no effect and a new instance is created every time.
 
     visible : boolean or None, optional \n
         Sets the visibility of the AxisVM application, while a None\n
@@ -51,7 +54,11 @@ def start_AxisVM(*args, join=False, visible=None,
     -------
     axisvm.axapp.AxApp
         A python wrapper around an IAxisVMApplication instance.
- 
+        
+    Examples
+    --------
+    >>> from axisvm.com.client import start_AxisVM
+    >>> axvm = start_AxisVM(visible=True, daemon=True)
     """
     axapp = _find_AxisVM()
     if axapp is not None and not join:

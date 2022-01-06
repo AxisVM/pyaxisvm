@@ -11,7 +11,7 @@ def find_axisvm_tlb():
     consider unregistering the ones you don't use.
     """
     items = FindTlbsWithDescription('AxisVM Library')
-    # fixup versions - we assume hex
+    # fixup versions - we expect hex
     for i in items:
         i.major = int(i.major, 16)
         i.minor = int(i.minor, 16)

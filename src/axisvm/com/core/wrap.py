@@ -79,6 +79,8 @@ class AxWrapper(Wrapper):
         if self.__has_items:
             cls = AxWrapper if self.__itemcls__ is None else self.__itemcls__
             if isinstance(ind, int):
+                if ind < 0:
+                    ind = self._wrapped.Count + 1 + ind
                 return cls(wrap=self._wrapped.Item[ind])
             elif isinstance(ind, slice):
                 axobj = self._wrapped
@@ -87,7 +89,12 @@ class AxWrapper(Wrapper):
                 start = 1 if start == None else start
                 stop = axobj.Count + 1 if stop == None else stop
                 step = 1 if step == None else step
-                res = [item(i) for i in range(start, stop, step)]
+                inds = list(range(start, stop, step))
+                if min(inds) < 0:
+                    N = self._wrapped.Count + 1
+                    foo = lambda i : i if i > 0 else N + i
+                    inds = map(foo, inds)
+                res = list(map(item, inds))
                 if len(res) == 1:
                     return res[0]
                 return AxItemCollection(res)
