@@ -1,3 +1,4 @@
+![alt text](https://github.com/AxisVM/DynamoToAxisVM/blob/master/Documentation/images/AxisVM%20logo.bmp)
 # **PyAxisVM**
 
 The official python package of **AxisVM**, a Structural Analysis & Design Software.
