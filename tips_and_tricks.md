@@ -1,6 +1,6 @@
 # **Tips and Tricks**
 
-This notebook sums up the changes in syntax, compared to the 'raw' usage of the COM type library. Everything the API provides out of the box is still available and is working according to the docs, but the syntax of Python provides a few shortcuts to make coding easier.
+This notebook sums up the changes in syntax, compared to the 'raw' usage of the COM type library. Everything the API provides out of the box is still available and is working according to the _[***docs***](https://axisvm.eu/axisvm-downloads/#application)_, but the syntax of Python provides a few shortcuts to make coding easier.
 
 ### **Collections and Slicing**
 
