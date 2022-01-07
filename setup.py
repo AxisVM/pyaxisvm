@@ -1,4 +1,3 @@
-
 import setuptools
 
 with open("README.md", "r") as fh:
@@ -8,13 +7,21 @@ with open('requirements.txt') as f:
     required = f.read().splitlines()
 required.append('comtypes @ https://github.com/BALOGHBence/comtypes/archive/refs/tags/v1.0.0.zip')
 
+def get_version(rel_path):
+    for line in read(rel_path).splitlines():
+        if line.startswith('__version__'):
+            delim = '"' if '"' in line else "'"
+            return line.split(delim)[1]
+    else:
+        raise RuntimeError("Unable to find version string.")
+
 setuptools.setup(
     name="axisvm",                     
-    version="0.0.4",                        
-    author="Inter-CAD Ltd",
+    version=get_version("src/axisvm/__init__.py"),                        
+    author="Inter-CAD Ltd.",
     author_email = 'bbalogh@axisvm.eu',
     url = 'https://github.com/AxisVM/pyaxisvm',   
-    download_url = 'https://github.com/AxisVM/pyaxisvm/archive/refs/tags/v_0_0_2.zip',                     
+    download_url = 'https://github.com/AxisVM/pyaxisvm/archive/refs/tags/0.0.dev2.zip',                     
     keywords = ['AxisVM', 'Axis', 'Civil Engineering'],
     description="A python package for AxisVM",
     long_description=long_description,   
