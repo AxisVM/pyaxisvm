@@ -29,7 +29,7 @@ setuptools.setup(
     author="Inter-CAD Ltd.",
     author_email = 'bbalogh@axisvm.eu',
     url = 'https://github.com/AxisVM/pyaxisvm',   
-    download_url = 'https://github.com/AxisVM/pyaxisvm/archive/refs/tags/0.0.dev2.zip',                     
+    download_url = 'https://github.com/AxisVM/pyaxisvm/archive/refs/tags/0.0.dev3.zip',                     
     keywords = ['AxisVM', 'Axis', 'Civil Engineering'],
     description="A python package for AxisVM",
     long_description=long_description,   
