@@ -41,7 +41,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     packages=setuptools.find_packages(where='src'),   
     classifiers=[
-        'Development Status :: 3 - Alpha',     
+        'Development Status :: 5 - Production/Stable',     
         'License :: OSI Approved :: MIT License',   
         'Programming Language :: Python :: 3',
     ],
