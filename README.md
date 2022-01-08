@@ -18,7 +18,7 @@ The **PyAxisVM** project offers a high-level interface to **AxisVM**, making its
 On top of that, **PyAxisVM** ehnaces the type library with Python's slicing mechanism, context management and more, that enables writing clean, concise, and readable code.
 
 ## **Installation**
-This is optional, but we suggest you to create a dedicated virtual enviroment to avoid conflicts with your other projects. Create a folder, open a command shell in that folder and use the following command
+This is optional, but we suggest you to create a dedicated virtual enviroment at all times to avoid conflicts with your other projects. Create a folder, open a command shell in that folder and use the following command
 
 ```console
 >>> python -m venv venv_name
@@ -30,7 +30,7 @@ Once the enviroment is created, activate it via typing
 >>> .\venv_name\Scripts\activate
 ```
 
-The **AxisVM** python package can be installed (either in a virtual enviroment or globally) from PyPI using `pip` on Python >= 3.5:
+The **AxisVM** python package can be installed (either in a virtual enviroment or globally) from PyPI using `pip` on Python >= 3.6:
 
 ```console
 >>> pip install axisvm
@@ -41,19 +41,17 @@ The **AxisVM** python package can be installed (either in a virtual enviroment o
 The ***AxisVM API Reference Guide*** is available in pdf format,  you can download it _[***here***](https://axisvm.eu/axisvm-downloads/#application)_.
 
 
-It is highly recommended to install **PyAxisVM** in a dedicated virtual enviroment to avoid conflicts with other libraries. One of the reasons for this is that the `comtypes` package throws an error for empty SafeArrays. This issue is fixed and a pull request has been made. Until the request gets accepted, it is important to uninstall exisitng installations of `comtypes` before installing **PyAxisVM**. Alternatively, you can install **PyAxisVM** using the `--force-reinstall` flag. 
+As for now, the official `comtypes` package throws an error for empty SafeArrays. This issue is fixed and a pull request has been made. Until the request gets accepted, it is important to uninstall exisitng installations of `comtypes` before installing **PyAxisVM** and install it as 
 
 ```console
->>> pip install --force-reinstall axisvm
+>>> pip install git+https://github.com/AxisVM/comtypes
 ```
 
-If `comtypes` is not yet installed or you install **PyAxisVM** in a dedicated virtual enviroment, a corrected version of `comtypes` gets installed automatically. 
-
-Please feel free to post issues and other questions at **PyAxisVM** Issues. This is the best place to post questions and code.
+Please feel free to post issues and other questions at **PyAxisVM** Issues. This is the best place to post questions and code related to issues with this project.
 
 ## **Dependencies**
 
-You will need a local licenced copy of **AxisVM** prior and including 13r2. To get a copy of **AxisVM**, please visit our _[***homepage***](https://axisvm.eu/)_.
+You will need a local licenced copy of **AxisVM** version >= 13r2. To get a copy of **AxisVM**, please visit our _[***homepage***](https://axisvm.eu/)_.
 
 
 ## **Getting Started**
@@ -66,7 +64,7 @@ If this is not your first time using **AxisVM** through a COM interface on your 
 
 ### **Launch AxisVM**
 
-The `axisvm.com.client` submodule implements various tools to handle the client side operations of creating a COM connection. Import the module and start a new application instance with the `start_AxisVM` method.
+The `axisvm.com.client` submodule implements various tools to handle the client side operations of creating a COM connection. Import the module and start a new application instance with the `start_AxisVM` method:
 
 
 ```python
@@ -78,7 +76,7 @@ To test the connection, you can query the path of the executable being run by ty
 
 ### **Basic Usage**
 
-If the connection is complete, create a new model and get an interface to it.
+If the connection is complete, create a new model and get an interface to it:
 
 
 ```python
@@ -118,7 +116,7 @@ Take a look at the jupyter notebooks in the _[***examples***](https://github.com
 
 ## **Tips and Tricks**
 
-**PyAxisVM** wraps up the COM type library, allowing users to exploit the elegant and concise syntax Python provides, while leaving everything on the table. If for example, we wanted to calculate areas of surface elements, the out of box solution would be something like
+**PyAxisVM** wraps up the COM type library, allowing users to exploit the elegant and concise syntax that Python provides, while still leaving everything on the table for legacy code. If for example, we wanted to calculate areas of surface elements, the out of box solution would be something like
 
 ```python
 areas = []
