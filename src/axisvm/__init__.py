@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__version__ = "v1.0.0-beta"
+__version__ = "v1.0.0"
 
 # Set a parameter to control default print format for floats outside
 # of the plotter
