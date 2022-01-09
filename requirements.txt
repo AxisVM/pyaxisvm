@@ -1,3 +1,4 @@
 setuptools
 wheel
+pywin32
 dewloosh.geom
