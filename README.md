@@ -41,12 +41,6 @@ The **AxisVM** python package can be installed (either in a virtual enviroment o
 The ***AxisVM API Reference Guide*** is available in pdf format,  you can download it _[***here***](https://axisvm.eu/axisvm-downloads/#application)_.
 
 
-As for now, the official `comtypes` package throws an error for empty SafeArrays. This issue is fixed and a pull request has been made. Until the request gets accepted, it is important to uninstall exisitng installations of `comtypes` before installing **PyAxisVM** and install it as 
-
-```console
->>> pip install git+https://github.com/AxisVM/comtypes
-```
-
 Please feel free to post issues and other questions at **PyAxisVM** Issues. This is the best place to post questions and code related to issues with this project.
 
 ## **Dependencies**

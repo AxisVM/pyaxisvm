@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from dewloosh.core.typing.wrap import Wrapper
+from dewloosh.core.abc.wrap import Wrapper
 from typing import Callable, Iterable, Any
 
 
