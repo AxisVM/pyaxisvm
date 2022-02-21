@@ -105,16 +105,8 @@ axapp.AskSaveOnLastReleased = False
 axapp.ApplicationClose = axtlb.acEnableNoWarning
 ```
 
-As a result of these settings, if the COM server is shut down, AxisVM shuts down either, hence the term `daemon`. Shutting down the COM server can be done as:
+As a result of these settings, if the COM server is shut down, AxisVM shuts down either, hence the term `daemon`. Shutting down the COM server can be done with typing
 
 ```python
 axapp.Quit()
 ```
-
-or
-
-```python
-del axapp
-```
-
-The difference here is that in the second case `axapp` gets garbage collected (killing the connection before), whereas in the first case it only kills the connection.

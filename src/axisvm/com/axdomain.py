@@ -30,6 +30,7 @@ class AxDomain(AxWrapper):
         else:
             return A, B, D, S
 
+    
     def GenerateMesh(self, *args, **kwargs):
         """
         Generates a mesh for the domain. If successful, returns the 
@@ -48,10 +49,11 @@ class AxDomain(AxWrapper):
             UPDATE : The pull request and the included bugfix is accepted and
                      will be included in comtypes v1.10.11. (2022.01.28)
         """
-        try:
-            return self._wrapped.GenerateMesh(*args, **kwargs)
-        except IndexError:
-            pass
+        return self._wrapped.GenerateMesh(*args, **kwargs)
+        #try:
+        #    return self._wrapped.GenerateMesh(*args, **kwargs)
+        #except IndexError:
+        #    pass
 
 
 class AxDomains(AxWrapper):
