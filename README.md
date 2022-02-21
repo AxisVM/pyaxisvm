@@ -1,7 +1,25 @@
 ![alt text](https://github.com/AxisVM/DynamoToAxisVM/blob/master/Documentation/images/AxisVM%20logo.bmp)
+
 # **PyAxisVM**
 
 The official python package of **AxisVM**, a Structural Analysis & Design Software.
+
+<table>
+    <tr>
+        <td>Latest Release</td>
+        <td>
+            <a href="https://pypi.org/project/axisvm/"/>
+            <img src="https://badge.fury.io/py/axisvm.svg"/>
+        </td>
+    </tr>
+    <tr>
+        <td>License</td>
+        <td>
+            <a href="https://opensource.org/licenses/MIT"/>
+            <img src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
+        </td>
+    </tr>
+</table>
 
 ## **Overview**
 
