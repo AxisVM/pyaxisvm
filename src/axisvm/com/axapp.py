@@ -49,7 +49,4 @@ class AxApp(AxWrapper):
         self._wrapped.Quit()
         self._wrapped = None
         
-    #def __del__(self):
-    #    self.Quit()
-        
 
