@@ -31,7 +31,7 @@ class AxApp(AxWrapper):
             self._model = AxModel(wrap=self._wrapped.Models.Item[value])
         elif isinstance(value, str):
             if os.path.exists(value):
-                if not self._model:
+                if self._model is None:
                     self.new_model()
                 self._model.LoadFromFile(value)
             else:
