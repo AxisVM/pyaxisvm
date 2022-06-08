@@ -48,5 +48,3 @@ class AxApp(AxWrapper):
             self._wrapped.UnLoadCOMClients()
         self._wrapped.Quit()
         self._wrapped = None
-        
-

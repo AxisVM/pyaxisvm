@@ -37,19 +37,16 @@ def start_AxisVM(*args, join=False, visible=None,
         Assuming that `axapp` is a COM interface to an AxisVM application,\n
         `daemon=True` is equivalent to
 
-        ```py 
         >>> from axisvm.com.tlb import acEnableNoWarning, lbFalse, lbTrue
         >>> axapp.CloseOnLastReleased = lbTrue
         >>> axapp.AskCloseOnLastReleased = lbFalse
         >>> axapp.AskSaveOnLastReleased = lbFalse
         >>> axapp.ApplicationClose = acEnableNoWarning
-        ```
         
     wrap : boolean, optional \n
         Wraps the returning object if True, returns the raw object otherwise. \n
         Default is True.
 
-        
     Returns
     -------
     axisvm.axapp.AxApp

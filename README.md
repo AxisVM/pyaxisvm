@@ -33,7 +33,7 @@ The **PyAxisVM** project offers a high-level interface to **AxisVM**, making its
 
 * build extension modules
 
-On top of that, **PyAxisVM** ehnaces the type library with Python's slicing mechanism, context management and more, that enables writing clean, concise, and readable code.
+On top of that, **PyAxisVM** enhances the type library with Python's slicing mechanism, context management and more, that enables writing clean, concise, and readable code.
 
 ## **Installation**
 This is optional, but we suggest you to create a dedicated virtual enviroment at all times to avoid conflicts with your other projects. Create a folder, open a command shell in that folder and use the following command
