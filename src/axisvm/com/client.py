@@ -112,8 +112,3 @@ def _find_AxisVM():
         return GetActiveObject('AxisVM.AxisVMApplication')
     except Exception:
         return None
-    
-    
-if __name__ == '__main__':
-    from axisvm.com.client import start_AxisVM
-    axapp = start_AxisVM(visible=True, daemon=True)
