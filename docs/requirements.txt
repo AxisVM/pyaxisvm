@@ -1,2 +1,6 @@
 myst_parser
 furo
+setuptools
+wheel
+dewloosh.core
+numpy
