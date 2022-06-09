@@ -16,7 +16,6 @@ with open("README.md", "r") as fh:
 
 with open('requirements.txt') as f:
     required = f.read().splitlines()
-#required.append('comtypes @ https://github.com/AxisVM/comtypes/archive/refs/tags/v1.0.0.zip')
 
 
 def get_version(rel_path):
@@ -49,4 +48,3 @@ setuptools.setup(
     package_dir={'':'src'},
 	install_requires=required
 )
-
