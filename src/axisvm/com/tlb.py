@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from win32com.client.selecttlb import FindTlbsWithDescription
 from comtypes import client as cc, GUID as comGUID
 import comtypes.client as cc
 
@@ -10,6 +9,7 @@ def find_axisvm_tlb():
     specs. If the function returns more than one item,
     consider unregistering the ones you don't use.
     """
+    from win32com.client.selecttlb import FindTlbsWithDescription
     items = FindTlbsWithDescription('AxisVM Library')
     # fixup versions - we expect hex
     for i in items:
