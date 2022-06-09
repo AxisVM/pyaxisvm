@@ -1,5 +1,4 @@
 Client - Create a client to an AxisVM application
 =================================================
 
-.. automodule:: axisvm.com.client
-   :members: start_AxisVM
+.. autofunction:: axisvm.com.client.start_AxisVM
