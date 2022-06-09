@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from comtypes.client import CreateObject, GetActiveObject
 from time import sleep
 from axisvm.com.axapp import AxApp
 
@@ -67,6 +66,7 @@ def start_AxisVM(*args, join=False, visible=None,
         finally:
             axapp = None
     if axapp is None:
+        from comtypes.client import CreateObject
         axapp = CreateObject("AxisVM.AxisVMApplication")
     if axapp is not None:
         _init_AxisVM(axapp, daemon=daemon, visible=visible, **kwargs)
@@ -109,6 +109,7 @@ def _from_file(axapp, path):
 
 def _find_AxisVM():
     try:
+        from comtypes.client import GetActiveObject
         return GetActiveObject('AxisVM.AxisVMApplication')
     except Exception:
         return None

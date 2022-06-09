@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-from comtypes import client as cc, GUID as comGUID
-import comtypes.client as cc
-
 
 def find_axisvm_tlb():
     """Finds all registered AxisVM Type Libraries and 
@@ -53,8 +50,10 @@ def wrap_axisvm_tlb(tlbid=None, major=None, minor=None):
     -------
         module
             The wrapped AxisVM type library as a python module.
-    """   
+    """
+    from comtypes import client as cc   
     if tlbid is None or major is None or minor is None:
+        from comtypes import GUID as comGUID
         tlb = find_axisvm_tlb()[0]
         tlbid = comGUID(tlb['clsid'])   
         major, minor = tlb['major'], tlb['minor']
