@@ -117,8 +117,3 @@ class AxWrapper(Wrapper):
                     raise TypeError("'{}' object is not "
                                     "subscriptable".format(
                                         self.__class__.__name__))
-
-
-
-               
-            
