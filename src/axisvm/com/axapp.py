@@ -5,6 +5,9 @@ import os
 
 
 class AxApp(AxWrapper):
+    """
+    Wrapper for the `IAxisVMApplication` COM interface.
+    """
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -40,6 +43,7 @@ class AxApp(AxWrapper):
             raise RuntimeError("Invalid input : {}!".format(value))
         
     def new_model(self):
+        """Creates and returns a new model."""
         self.model = self._wrapped.Models.New()
         return self._model
     
