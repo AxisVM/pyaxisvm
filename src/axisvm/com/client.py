@@ -8,7 +8,7 @@ __all__ = ['start_AxisVM']
 
 
 def start_AxisVM(*args, join=False, visible=None, 
-                 daemon=False, wrap=True, **kwargs):
+                 daemon=False, wrap=True, **kwargs) -> AxApp:
     """Returns an interface to a new, or an existing AxisVM application. 
     
     If the argument `join` is True, an attempt is made to connect to an \n
@@ -112,8 +112,3 @@ def _find_AxisVM():
         return GetActiveObject('AxisVM.AxisVMApplication')
     except Exception:
         return None
-    
-    
-if __name__ == '__main__':
-    from axisvm.com.client import start_AxisVM
-    axapp = start_AxisVM(visible=True, daemon=True)
